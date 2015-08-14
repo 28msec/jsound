@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE preface PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY PRODUCT "JSound - valid JSON data">
+<!ENTITY BOOKID "JSound">
+<!ENTITY YEAR "2013">
+<!ENTITY HOLDER "| You need to change the HOLDER entity in the en-US/JSound.ent file |">
+]>
+<preface id="pref-JSound-Preface">
+	<title>Preface</title>
+	 <xi:include href="Common_Content/Conventions.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	 <xi:include href="Feedback.xml" xmlns:xi="http://www.w3.org/2001/XInclude"><xi:fallback xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include href="Common_Content/Feedback.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	 </xi:fallback>
+	 </xi:include>
+</preface>
+

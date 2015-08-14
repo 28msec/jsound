@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.4. Object Facets</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css" /><link rel="stylesheet" media="print" href="Common_Content/css/print.css" type="text/css" /><meta name="generator" content="publican 3.2.1" /><meta name="package" content="JSound-JSound-0.1-en-US-1-4" /><link rel="home" href="index.html" title="JSound" /><link rel="up" href="chap-Object.html" title="Chapter 5. Object Types" /><link rel="prev" href="ch05s03.html" title="5.3. Builtin Object Type" /><link rel="next" href="chap-Array.html" title="Chapter 6. Array Types" /></head><body><p id="title"><a class="left" href="https://fedorahosted.org/publican"><img alt="Product Site" src="Common_Content/images//image_left.png" /></a><a class="right" href="https://fedorahosted.org/publican"><img alt="Documentation Site" src="Common_Content/images//image_right.png" /></a></p><ul class="docnav top"><li class="previous"><a accesskey="p" href="ch05s03.html"><strong>Prev</strong></a></li><li class="home">JSound</li><li class="next"><a accesskey="n" href="chap-Array.html"><strong>Next</strong></a></li></ul><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm139773370701024"></a>5.4. Object Facets</h2></div></div></div><div class="para">
+			Restriction is done using the general Facets, or the following object Facets.
+		</div><div class="itemizedlist"><ul><li class="listitem"><div class="para">
+					$content (object): the layout definition. Each pair in $content is called a field descriptor. The value in each field descriptor has the following properties.
+				</div><div class="itemizedlist"><ul><li class="listitem"><div class="para">
+							$type (string or object) - required (<code class="code">jsd:JDST0001</code> if absent): the name of a Type (Qualified Name in a string) or the type itself (an object) that the value must match. <code class="code">jsd:JDST0002</code> is raised if if is a Qualified Name that cannot be resolved.
+						</div></li><li class="listitem"><div class="para">
+							$optional (boolean) - optional: indicates that the pair is optional. Default is false.
+						</div></li><li class="listitem"><div class="para">
+							$default (item) - optional: indicates a default value to be taken the value is missing in the Serialized Instance. $optional is then ignored.
+						</div><div class="para">
+							However, if this value is an object with a pair named $computed (which must be associated with a string), then the JSONiq query in $content.$default.$computed is executed upon Annotation, with the context item bound to the Candidate Instance being matched against the containing Object Type. It must result in one item, which is the default value for the Pair Descriptor.
+						</div></li></ul></div><div class="para">
+					An object $o is valid against the $content facet if the following conditions are met:
+				</div><div class="itemizedlist"><ul><li class="listitem"><div class="para">
+							For each pair $k : $v in the field descriptor such that $v."$optional" is false and $v."$default" is absent, there must be a pair named $k in $o.
+						</div></li><li class="listitem"><div class="para">
+							For each pair $k : $v in the field descriptor, if $o.$k exists, then $o.$k must be valid against the Type $v."$type".
+						</div></li></ul></div></li><li class="listitem"><div class="para">
+					$open (boolean) : specifies whether pairs not specified in $content are to be accepted. The default is the same as the $baseType (true if $baseType is object).
+				</div><div class="para">
+					All objects are valid against the $open facet if it is set to true.
+				</div><div class="para">
+					If it is set to false, an object $o is valid against the $open facet if all its keys appear in $content, or in the $content of a super type.
+				</div></li></ul></div><div class="para">
+			The $open Facet behaves like most Facets, i.e., if that of the Base Type is false, it cannot be set back to true, otherwise <code class="code">jsd:JDST0007</code> is raised.
+		</div><div class="para">
+			The $content Facet is Accumulative, in that the new field descriptors are actually merged with the Base Type's $content Facet.
+		</div><div class="para">
+			If a field descriptor in the $content Facet is overriden, it must be more restrictive, i.e., its $type must be a subtype of the $type associated to this key by the closest super type which does so. Also, $optional, if false, cannot be set back to true. If any of these two constraints is not met, <code class="code">jsd:JDST0007</code> is raised.
+		</div><div class="para">
+			Finally, there is an additional constraint that spans across the two object Facets: Field descriptors with new keys may not be added to the $content Facet if the $baseType's $open Facet is false. Otherwise, <code class="code">jsd:JDST0008</code> is raised.
+		</div></div><ul class="docnav"><li class="previous"><a accesskey="p" href="ch05s03.html"><strong>Prev</strong>5.3. Builtin Object Type</a></li><li class="up"><a accesskey="u" href="#"><strong>Up</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Home</strong></a></li><li class="next"><a accesskey="n" href="chap-Array.html"><strong>Next</strong>Chapter 6. Array Types</a></li></ul></body></html>

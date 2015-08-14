@@ -12,8 +12,7 @@
   <xi:include href="Object.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="Array.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="Union.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="ValidationAnnotation.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="Errors.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+<!--  <xi:include href="ValidationAnnotation.xml" xmlns:xi="http://www.w3.org/2001/XInclude" /> -->
   <xi:include href="SchemaSchema.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   <xi:include href="Revision_History.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<index />
